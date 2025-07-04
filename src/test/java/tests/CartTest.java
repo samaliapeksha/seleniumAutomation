@@ -38,7 +38,7 @@ public class CartTest extends BaseTest {
         wait.until(ExpectedConditions.visibilityOfElementLocated(
                 By.xpath("//span[@class='hi-user containMiniTitle ng-binding']")));
 
-        // ✅ Wait for homepage categories (like laptopsImg) to reappear
+        // Wait for homepage categories (like laptopsImg) to reappear
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("laptopsImg")));
 
         // Navigate to laptops
