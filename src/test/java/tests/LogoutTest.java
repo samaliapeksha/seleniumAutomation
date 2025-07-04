@@ -24,42 +24,36 @@ public class LogoutTest {
 
     @Test
     public void loginAndLogout() {
-        // Click user icon
         driver.findElement(By.id("menuUser")).click();
 
-        // Wait for login modal
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("username")));
-
-        // Enter credentials
         driver.findElement(By.name("username")).sendKeys("sandy10");
         driver.findElement(By.name("password")).sendKeys("xp@Qg7uCT48j");
 
-        // Wait for loader to disappear
-        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector(".loader")));
-
-        // Click Sign In
         driver.findElement(By.id("sign_in_btn")).click();
 
-        // Wait for login to complete (user name visible)
+        // Wait for loader to disappear after clicking login
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector(".loader")));
+
+        // Wait for user to be logged in (username displayed)
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#menuUserLink > span")));
 
-        // Click user icon to open dropdown
-        driver.findElement(By.id("menuUserLink")).click();
+        // Wait again for loader to disappear
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector(".loader")));
 
-        // Wait for the menu container
+        // Wait until menuUserLink is clickable
+        WebElement menuUserLink = wait.until(ExpectedConditions.elementToBeClickable(By.id("menuUserLink")));
+        menuUserLink.click();
+
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("loginMiniTitle")));
 
-        // Wait for the Sign Out label using stable XPath
-        WebElement signOutLabel = wait.until(
-                ExpectedConditions.visibilityOfElementLocated(
-                        By.xpath("//*[@id='loginMiniTitle']//label[@translate='Sign_out']")
-                )
-        );
+        WebElement signOutLabel = wait.until(ExpectedConditions.visibilityOfElementLocated(
+                By.xpath("//*[@id='loginMiniTitle']//label[@translate='Sign_out']")
+        ));
 
-        // Click using JavaScript to avoid issues with non-clickable labels
         ((JavascriptExecutor) driver).executeScript("arguments[0].click();", signOutLabel);
 
-        // Verify logout - wait until user icon (Sign In) is visible again
+        // Verify logout
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("menuUser")));
     }
 

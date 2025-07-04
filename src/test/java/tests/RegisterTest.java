@@ -32,11 +32,11 @@ public class RegisterTest extends BaseTest {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("usernameRegisterPage")));
 
         // Fill the form
-        driver.findElement(By.name("usernameRegisterPage")).sendKeys("Sanduni02");
-        driver.findElement(By.name("emailRegisterPage")).sendKeys("sanduni01@example.com");
+        driver.findElement(By.name("usernameRegisterPage")).sendKeys("Nimal");
+        driver.findElement(By.name("emailRegisterPage")).sendKeys("nimal@example.com");
         driver.findElement(By.name("passwordRegisterPage")).sendKeys("Test1234");
         driver.findElement(By.name("confirm_passwordRegisterPage")).sendKeys("Test1234");
-        driver.findElement(By.name("first_nameRegisterPage")).sendKeys("Sanduni");
+        driver.findElement(By.name("first_nameRegisterPage")).sendKeys("Nimal");
         driver.findElement(By.name("last_nameRegisterPage")).sendKeys("Peiris");
         driver.findElement(By.name("phone_numberRegisterPage")).sendKeys("0771284507");
         driver.findElement(By.name("cityRegisterPage")).sendKeys("Colombo");
